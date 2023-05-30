@@ -21,8 +21,9 @@ public class Autor {
 
     @Column(name = "Nacionalidad")
     private String nacionalidad;
-    @Email
+
     @Column(name = "Email")
+    @Email
     private String email;
 
     public Autor(Integer id, String nombre, String apellido, String pseudonimo, String nacionalidad, String email) {
