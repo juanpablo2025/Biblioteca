@@ -24,7 +24,16 @@ public class ServicioEditorial implements ServicioBase<Editorial> {
 
     @Override
     public Editorial buscarPorId(Integer id) throws Exception {
-        return null;
+        try {
+            Optional<Editorial> editorialOpcional = repositorioEditorial.findById(id);
+            if (editorialOpcional.isPresent()) {
+                return editorialOpcional.get();
+            } else {
+                throw new Exception("Editorial no encontrada");
+            }
+        } catch (Exception error) {
+            throw new Exception(error.getMessage());
+        }
     }
 
     @Override
