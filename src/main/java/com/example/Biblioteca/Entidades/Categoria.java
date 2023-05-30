@@ -19,7 +19,7 @@ public class Categoria {
 	@Column(name = "Nombre", unique = true)
 	private String nombre;
 
-	@Column(name = "Description", max = 100)
+	@Column(name = "Description",length = 100)
 	private String descripcion;
 
 	public Categoria(Integer id, String nombre, String descripcion) {

@@ -10,15 +10,56 @@ public class Ubicacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-    
-	@Column(name = "Piso",max=20)
+
+	@Column(name = "Piso",length = 10)
     /*@Size(20)  varchar ?*/
 	private String Piso;
-    @Lob
-    @Column(name ="Salon",max=20)
-    final String Salon;
 
-    @Column(name="Estante",max=20)
+    @Column(name ="Salon",length = 10)
+    private String Salon;
+
+    @Column(name="Estante",length = 10)
     private String estante;
 
+    public Ubicacion(Integer id, String piso, String salon, String estante) {
+        this.id = id;
+        Piso = piso;
+        Salon = salon;
+        this.estante = estante;
+    }
+
+    public Ubicacion() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPiso() {
+        return Piso;
+    }
+
+    public void setPiso(String piso) {
+        Piso = piso;
+    }
+
+    public String getSalon() {
+        return Salon;
+    }
+
+    public void setSalon(String salon) {
+        Salon = salon;
+    }
+
+    public String getEstante() {
+        return estante;
+    }
+
+    public void setEstante(String estante) {
+        this.estante = estante;
+    }
 }
