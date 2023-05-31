@@ -3,7 +3,6 @@ package com.example.Biblioteca.Servicios;
 import com.example.Biblioteca.Entidades.Autor;
 import com.example.Biblioteca.Repositorios.RepositorioAutor;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +29,7 @@ public class ServicioAutor implements ServicioBase<Autor> {
             if (autorOpcional.isPresent()) {
                 return autorOpcional.get();
             } else {
-                throw new Exception("Usuario no encontrado");
+                throw new Exception("Autor no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -63,7 +62,7 @@ public class ServicioAutor implements ServicioBase<Autor> {
                 Autor autorActualizado = repositorioAutor.save(autorExistente);
                 return autorActualizado;
             } else {
-                throw new Exception("usuario no encontrado");
+                throw new Exception("Autor no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -78,7 +77,7 @@ public class ServicioAutor implements ServicioBase<Autor> {
                 repositorioAutor.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Usuario no encontrado");
+                throw new Exception("Autor no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

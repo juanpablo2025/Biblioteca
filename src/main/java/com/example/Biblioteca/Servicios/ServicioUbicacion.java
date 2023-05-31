@@ -28,7 +28,7 @@ public class ServicioUbicacion implements ServicioBase<Ubicacion>{
             if (autorOpcional.isPresent()) {
                 return autorOpcional.get();
             } else {
-                throw new Exception("Ubicaion no encontrada");
+                throw new Exception("Ubicacion no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -60,7 +60,7 @@ public class ServicioUbicacion implements ServicioBase<Ubicacion>{
                 Ubicacion autorActualizado = repositorioUbicacion.save(autorExistente);
                 return autorActualizado;
             } else {
-                throw new Exception("usuario no encontrado");
+                throw new Exception("Ubicacion no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -75,7 +75,7 @@ public class ServicioUbicacion implements ServicioBase<Ubicacion>{
                 repositorioUbicacion.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Usuario no encontrado");
+                throw new Exception("Ubicacion no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

@@ -60,7 +60,7 @@ public class ServicioEditorial implements ServicioBase<Editorial> {
                 Editorial editorialActualizado = repositorioEditorial.save(editorialExistente);
                 return editorialActualizado;
             } else {
-                throw new Exception("usuario no encontrado");
+                throw new Exception("Editorial no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

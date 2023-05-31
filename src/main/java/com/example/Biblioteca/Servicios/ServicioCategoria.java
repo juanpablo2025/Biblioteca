@@ -28,7 +28,7 @@ public class ServicioCategoria implements ServicioBase<Categoria>{
             if (categoriaOpcional.isPresent()) {
                 return categoriaOpcional.get();
             } else {
-                throw new Exception("Usuario no encontrado");
+                throw new Exception("Categoria no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -59,7 +59,7 @@ public class ServicioCategoria implements ServicioBase<Categoria>{
                 Categoria categoriaActualizado = repositorioCategoria.save(categoriaExistente);
                 return categoriaActualizado;
             } else {
-                throw new Exception("usuario no encontrado");
+                throw new Exception("Categoria no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
