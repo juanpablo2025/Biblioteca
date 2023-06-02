@@ -2,6 +2,7 @@ package com.example.Biblioteca.Servicios;
 
 import com.example.Biblioteca.Entidades.Autor;
 import com.example.Biblioteca.Repositorios.RepositorioAutor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,7 @@ public class ServicioAutor implements ServicioBase<Autor> {
     protected RepositorioAutor repositorioAutor;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Autor> buscarTodos() throws Exception {
         try {
             List<Autor> autor = repositorioAutor.findAll();
@@ -23,6 +25,7 @@ public class ServicioAutor implements ServicioBase<Autor> {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Autor buscarPorId(Integer id) throws Exception {
         try {
             Optional<Autor> autorOpcional = repositorioAutor.findById(id);
