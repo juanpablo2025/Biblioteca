@@ -1,5 +1,6 @@
 package com.example.Biblioteca.Entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
@@ -18,25 +19,30 @@ public class Autor {
     private String apellido;
     @Column(name = "Pseudonimo", unique = true)
     private String pseudonimo;
-
-    @Column(name = "Nacionalidad")
-    private String nacionalidad;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "Nacionalidad",nullable = false)
+    @JsonBackReference
+    private Pais nacionalidad;
 
     @Column(name = "Email")
     @Email
     private String email;
 
-    public Autor(Integer id, String nombre, String apellido, String pseudonimo, String nacionalidad, String email) {
+    @Transient
+    private String mensajeError;
+
+
+
+    public Autor() {
+    }
+
+    public Autor(Integer id, String nombre, String apellido, String pseudonimo, Pais nacionalidad, String email) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.pseudonimo = pseudonimo;
         this.nacionalidad = nacionalidad;
         this.email = email;
-
-    }
-
-    public Autor() {
     }
 
     public Integer getId() {
@@ -71,11 +77,11 @@ public class Autor {
         this.pseudonimo = pseudonimo;
     }
 
-    public String getNacionalidad() {
+    public Pais getNacionalidad() {
         return nacionalidad;
     }
 
-    public void setNacionalidad(String nacionalidad) {
+    public void setNacionalidad(Pais nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
 
@@ -85,5 +91,13 @@ public class Autor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
     }
 }

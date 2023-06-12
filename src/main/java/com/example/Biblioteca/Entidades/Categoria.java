@@ -1,11 +1,6 @@
 package com.example.Biblioteca.Entidades;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 
@@ -22,11 +17,18 @@ public class Categoria {
 	@Column(name = "Description",length = 100)
 	private String descripcion;
 
+	@Transient
+	private String mensajeError;
+
 	public Categoria(Integer id, String nombre, String descripcion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
+
+    public Categoria() {
+
+    }
 
 	public Integer getId() {
 		return id;
@@ -50,5 +52,13 @@ public class Categoria {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
 	}
 }

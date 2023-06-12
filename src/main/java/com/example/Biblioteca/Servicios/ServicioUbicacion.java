@@ -3,10 +3,11 @@ package com.example.Biblioteca.Servicios;
 import com.example.Biblioteca.Entidades.Ubicacion;
 import com.example.Biblioteca.Repositorios.RepositorioUbicacion;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ServicioUbicacion implements ServicioBase<Ubicacion>{
 
     @Autowired

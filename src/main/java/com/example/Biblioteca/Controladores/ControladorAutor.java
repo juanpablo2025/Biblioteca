@@ -3,7 +3,8 @@ package com.example.Biblioteca.Controladores;
 
 import com.example.Biblioteca.Entidades.Autor;
 import com.example.Biblioteca.Servicios.ServicioAutor;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/autores")
 public class ControladorAutor {
-    @Autowired
+   @Autowired(required=true)
     protected ServicioAutor servicioAutor;
 
     @PostMapping
@@ -37,7 +38,7 @@ public class ControladorAutor {
     @GetMapping
     public ResponseEntity<List<Autor>>buscarTodos(){
         try{
-            List<Autor> autores = ServicioAutor.buscarTodos();
+            List<Autor> autores = servicioAutor.buscarTodos();
                 return ResponseEntity
                         .status(HttpStatus.OK)
                         .body(autores);
@@ -52,7 +53,7 @@ public class ControladorAutor {
         @GetMapping("/{id}")
     public ResponseEntity<Autor>buscarPorId(@PathVariable Integer id){
         try{
-            Autor autorEncontrado=ServicioAutor.buscarPorId(id);
+            Autor autorEncontrado=servicioAutor.buscarPorId(id);
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .body(autorEncontrado);
@@ -62,6 +63,7 @@ public class ControladorAutor {
                     .body(null);
         }
     }
+
 
 
 }

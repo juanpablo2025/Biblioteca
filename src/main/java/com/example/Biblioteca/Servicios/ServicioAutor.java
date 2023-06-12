@@ -2,11 +2,13 @@ package com.example.Biblioteca.Servicios;
 
 import com.example.Biblioteca.Entidades.Autor;
 import com.example.Biblioteca.Repositorios.RepositorioAutor;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ServicioAutor implements ServicioBase<Autor> {
 
     @Autowired
@@ -53,6 +55,16 @@ public class ServicioAutor implements ServicioBase<Autor> {
 
     @Override
     public Autor actualizar(Integer id, Autor datosNuevos) throws Exception {
+        return null;
+    }
+
+    @Override
+    public boolean eliminar(Integer id) throws Exception {
+        return false;
+    }
+}
+   /* @Override
+    public Autor actualizar(Integer id, Autor datosNuevos) throws Exception {
         try {
             Optional<Autor> autorOptional = repositorioAutor.findById(id);
             if (autorOptional.isPresent()) {
@@ -87,4 +99,4 @@ public class ServicioAutor implements ServicioBase<Autor> {
         }
     }
 
-}
+}*/

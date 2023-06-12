@@ -1,6 +1,8 @@
 package com.example.Biblioteca.Controladores;
 
+import com.example.Biblioteca.Entidades.Autor;
 import com.example.Biblioteca.Entidades.Editorial;
+import com.example.Biblioteca.Servicios.ServicioAutor;
 import com.example.Biblioteca.Servicios.ServicioEditorial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,10 +35,32 @@ public class ControladorEditorial {
     @GetMapping
     public ResponseEntity<List<Editorial>>buscarTodos(){
         try{
-            List<Editorial> editoriales = ServicioEditorial.buscarTodos();
-        }
+            List<Editorial> editoriales = servicioEditorial.buscarTodos();
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(editoriales);
+        }catch(Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null);
 
+        }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Editorial>buscarPorId(@PathVariable Integer id){
+        try{
+            Editorial editorialEncontrada= servicioEditorial.buscarPorId(id);
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(editorialEncontrada);
+        }catch(Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        }
+    }
+
 
 
 
