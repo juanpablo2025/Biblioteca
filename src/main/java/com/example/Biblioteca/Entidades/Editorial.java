@@ -19,6 +19,9 @@ public class Editorial {
 
     private String description;
 
+    @Transient
+    private String mensajeError;
+
     public Editorial(Integer id, String nombre, String description) {
         this.id = id;
         this.nombre = nombre;
@@ -50,5 +53,13 @@ public class Editorial {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.Biblioteca.Controladores;
 
 
+import com.example.Biblioteca.Entidades.Autor;
 import com.example.Biblioteca.Entidades.Editorial;
 import com.example.Biblioteca.Servicios.ServicioEditorial;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,28 +17,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/editorial")
-@Tag(name="Servicio Editoriales",description = "CRUD Para la entidad editoriales")
+@Tag(name="Servicio Editoriales",description = "CRUD Para la entidad editorial")
 public class ControladorEditorial {
     @Autowired
     protected ServicioEditorial servicioEditorial;
 
-    @Operation(summary = "Registra una editorial en la BD")
-    @ApiResponses(value={
-            @ApiResponse(responseCode = "201", description = "La editorial fue creado con exito"),
-            @ApiResponse(responseCode = "400", description = "Error al registrar editorial")
+    @PostMapping
+    @Operation(summary = "Registra un Editorial en la BD")
+    @ApiResponses(value= {
+            @ApiResponse(responseCode = "201", description = "Autor fue creado con exito"),
+            @ApiResponse(responseCode = "400", description = "error al crear el autor")
     })
-    public ResponseEntity<Editorial> registrar(@RequestBody Editorial datosARegistrar){
-        try{
-            Editorial estudianteRegistrado=servicioEditorial.registrar(datosARegistrar);
+    public ResponseEntity<Editorial> registrar(@RequestBody Editorial datosAGuardar){
+        try {
+            Editorial editorialRegistrado=servicioEditorial.registrar(datosAGuardar);
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(estudianteRegistrado);
-
+                    .body(editorialRegistrado);
         }catch(Exception error){
-
+            String mensaje="Error al registrar"+error.getMessage();
+            Editorial editorialConError = new Editorial();
+            editorialConError.setMensajeError(mensaje);
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body(null);
+                    .body(editorialConError);
         }
     }
     @GetMapping
