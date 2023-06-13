@@ -12,7 +12,7 @@ public class Ubicacion {
 	private Integer id;
 
 	@Column(name = "Piso",length = 10)
-    /*@Size(20)  varchar ?*/
+
 	private String Piso;
 
     @Column(name ="Salon",length = 10)
@@ -20,6 +20,9 @@ public class Ubicacion {
 
     @Column(name="Estante",length = 10)
     private String estante;
+
+    @Transient
+    private String mensajeError;
 
     public Ubicacion(Integer id, String piso, String salon, String estante) {
         this.id = id;
@@ -61,5 +64,13 @@ public class Ubicacion {
 
     public void setEstante(String estante) {
         this.estante = estante;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
     }
 }
