@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
-@Entity
+@Entity/*entidades persistentes se identifican mediante la anotación*/
 @Table(name = "Autor")
 public class Autor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)/*Para generar los valores de una clave primaria, es decir, que los genere JPA automáticamente*/
     private Integer id;
     @Column(name = "Nombre", unique = true)
 
@@ -28,7 +28,7 @@ public class Autor {
     @Email
     private String email;
 
-    @Transient
+    @Transient/*se utiliza para indicarle a JPA que un atributo de una Entidad no debe de ser persistente*/
     private String mensajeError;
 
 

@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("api/v1/autores")
+@RestController/*es un tipo de controller que reciben peticiones con un formato de específico que cumple con formatos de solicitud RESTful habitualmente y mayormente en JSON , aunque a veces se usan otros como HTML, XML, o simplemente texto.*/
+@RequestMapping("api/v1/autores")/*se utiliza para asignar solicitudes web a clases de controlador específicas y/o métodos de controlador.*/
 @Tag(name="Servicio Autores",description ="CRUD de la entidad Autor")
 public class ControladorAutor {
-   @Autowired(required=true)
+   @Autowired/*nos proporciona control a la hora de querer inyectar nuestras dependencias o instancias que se almacenan en el contexto de Spring.*/
     protected ServicioAutor servicioAutor;
 
-    @PostMapping
+    @PostMapping/*es una anotación compuesta que actúa como un acceso directo para @RequestMapping*/
     @Operation(summary = "Registra un Autor en la BD")
-    @ApiResponses(value= {
+    @ApiResponses(value= {/*anotaciones swagger*/
             @ApiResponse(responseCode = "201", description = "Autor fue creado con exito"),
             @ApiResponse(responseCode = "400", description = "error al crear el autor")
     })

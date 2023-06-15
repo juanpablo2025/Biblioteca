@@ -1,5 +1,7 @@
 package com.example.Biblioteca.Entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,7 +18,12 @@ public class Pais {
     @Column(name ="nombre",unique = true)
     private String nombre;
 
+    @Transient
+    private String mensajeError;
+
     @OneToMany(mappedBy = "nacionalidad")
+    @JsonManagedReference
+    @JsonIgnore
     private List<Autor> autor;
 
     public Pais() {
@@ -50,5 +57,13 @@ public class Pais {
 
     public void setAutor(List<Autor> autor) {
         this.autor = autor;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
     }
 }
